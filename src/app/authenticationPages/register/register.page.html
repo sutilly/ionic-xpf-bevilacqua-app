@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+    <ion-toolbar mode="ios">
+        <ion-title class="ion-text-center">
+            Register
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-grid>
+        <ion-row>
+            <ion-col size-sm="12" size-md="6" offset-sm="0" offset-md="3">
+                <form [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm.value)">
+                    <ion-item>
+                        <ion-label position="stacked">Email</ion-label>
+                        <ion-input type="email" formControlName="email" autocapitalize="off"
+                                   inputmode="email"></ion-input>
+                    </ion-item>
+                    <div>
+                        <ng-container *ngFor="let validation of validationMessages.email">
+                            <div *ngIf="registerForm.get('email').hasError(validation.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+                                <small class="error-message">{{validation.message}}</small>
+                            </div>
+                        </ng-container>
+                    </div>
+
+                    <ion-item>
+                        <ion-label position="stacked">Password</ion-label>
+                        <ion-input type="password" formControlName="password"></ion-input>
+                    </ion-item>
+                    <div>
+                        <ng-container *ngFor="let validation of validationMessages.password">
+                            <div *ngIf="registerForm.get('password').hasError(validation.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)">
+                                <small class="error-message">{{validation.message}}</small>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <div class="ion-margin-top" *ngIf="errorMessage">
+                        <small class="error-message">{{errorMessage}}</small></div>
+                    <div class="ion-margin-top">
+                        <ion-button type="submit" expand="block" [disabled]="!registerForm.valid">Register
+                        </ion-button>
+                        <ion-button expand="block" [routerLink]="['/login']" type="button" fill="outline"
+                                    color="primary">Back to Login
+                        </ion-button>
+                    </div>
+                </form>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

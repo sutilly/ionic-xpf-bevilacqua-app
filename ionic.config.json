@@ -1,0 +1,7 @@
+{
+  "name": "bevi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

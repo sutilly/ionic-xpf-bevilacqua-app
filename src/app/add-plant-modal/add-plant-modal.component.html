@@ -1,0 +1,77 @@
+<ion-header>
+
+    <ion-toolbar mode="ios">
+        <ion-title>Add Plant</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="dismissModal()">
+                <ion-icon name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <form [formGroup]="newPlant" (ngSubmit)="submit()">
+        <ion-item>
+            <ion-label position="stacked" inputmode="text">Name</ion-label>
+            <ion-input formControlName="name"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.name">
+            <ng-container *ngIf="name.hasError(error.type) && (name.dirty || name.touched)">
+                <small class="error-message">{{error.message}}</small>
+            </ng-container>
+        </div>
+        <ion-item>
+            <ion-label position="stacked">Plant species</ion-label>
+            <ion-select class="ion-no-padding" interface="alert" formControlName="species" cancelText="Close"
+                        okText="Choose">
+                <ion-select-option *ngFor="let species of jsonService.plantSpecies">{{species.name}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.species">
+            <ng-container *ngIf="species.hasError(error.type) && (species.dirty || species.touched)">
+                <small class="error-message">{{error.message}}</small>
+            </ng-container>
+        </div>
+        <ion-item>
+            <ion-label position="stacked">Watering interval</ion-label>
+            <ion-select class="ion-no-padding" interface="alert" formControlName="interval" cancelText="Close"
+                        okText="Choose">
+                <ion-select-option>Every day</ion-select-option>
+                <ion-select-option>Every 2 days</ion-select-option>
+                <ion-select-option>Every 3 days</ion-select-option>
+                <ion-select-option>Every 4 days</ion-select-option>
+                <ion-select-option>Every 5 days</ion-select-option>
+                <ion-select-option>Every 6 days</ion-select-option>
+                <ion-select-option>Once a week</ion-select-option>
+                <ion-select-option>Every 2 weeks</ion-select-option>
+            </ion-select>
+            <div *ngFor="let error of errorMessages.interval">
+                <ng-container *ngIf="interval.hasError(error.type) && (interval.dirty || interval.touched)">
+                    <small class="error-message">{{error.message}}</small>
+                </ng-container>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Last watered</ion-label>
+            <ion-datetime class="ion-no-padding" formControlName="lastWatered"></ion-datetime>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.lastWatered">
+            <ng-container *ngIf="lastWatered.hasError(error.type) && (lastWatered.dirty || lastWatered.touched)">
+                <small class="error-message">{{error.message}}</small>
+            </ng-container>
+        </div>
+        <ion-item>
+            <ion-label position="stacked">Planting date</ion-label>
+            <ion-datetime class="ion-no-padding" formControlName="birthday"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked" inputmode="text">Description</ion-label>
+            <ion-textarea formControlName="description"></ion-textarea>
+        </ion-item>
+        <div class="ion-margin-top">
+            <ion-button expand="block" [disabled]="!newPlant.valid" type="submit" color="primary">Save</ion-button>
+        </div>
+    </form>
+</ion-content>
+

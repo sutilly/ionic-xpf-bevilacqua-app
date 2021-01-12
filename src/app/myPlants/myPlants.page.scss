@@ -1,0 +1,24 @@
+.celebrate {
+  color: black;
+  --padding-start: 0;
+}
+
+.fab-container {
+  padding: 0;
+}
+
+.bday-alert {
+  text-align: center;
+  align-items: center;
+}
+
+ion-grid{
+  ion-card{
+    width:100%;
+    margin:0 !important;
+    height: 100%;
+    ion-card-content{
+      padding: 0 !important;
+    }
+  }
+}

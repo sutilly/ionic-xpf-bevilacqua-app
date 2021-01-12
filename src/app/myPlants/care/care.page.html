@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+    <ion-toolbar mode="ios">
+        <ion-buttons slot="start">
+            <ion-back-button default-href="/members/myPlants"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">
+            Care Tips
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+    <ion-grid fixed="true">
+        <ion-row class="ion-align-items-center">
+            <ion-col size-sm="12" size-md="6" offset-sm="0" offset-md="3">
+                <ion-list>
+                    <ion-item (click)="goToWateringTips()">
+                        <ion-avatar slot="start" class="tips_avatar">
+                            <img src="/assets/icon/water-drops.svg">
+                        </ion-avatar>
+                        <ion-label>
+                            <h2 class="subject">Watering</h2>
+                            <h3>The Dos and Don’ts of watering plants</h3>
+                        </ion-label>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-avatar slot="start" class="tips_avatar">
+                            <img src="/assets/icon/flower-pot.svg">
+                        </ion-avatar>
+                        <ion-label>
+                            <h2 class="subject">Repotting</h2>
+                            <h3>How to repot a plant without killing it</h3>
+                        </ion-label>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-avatar slot="start" class="tips_avatar">
+                            <img src="/assets/icon/plant.svg">
+                        </ion-avatar>
+                        <ion-label>
+                            <h2 class="subject">Propagation</h2>
+                            <h3>A beginner's guide to grow your plant family</h3>
+                        </ion-label>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-avatar slot="start" class="tips_avatar">
+                            <img src="/assets/icon/bug.svg">
+                        </ion-avatar>
+                        <ion-label>
+                            <h2 class="subject">Pests and Diseases</h2>
+                            <h3>How to care for sick plants</h3>
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/tabs/myPlants"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-sm="4" size-md="4" offset-sm="4" offset-md="4">
+        <ion-button expand="block" (click)="logOutUser()">Log Out</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

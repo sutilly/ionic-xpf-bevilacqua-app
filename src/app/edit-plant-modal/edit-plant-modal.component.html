@@ -1,0 +1,85 @@
+<ion-header>
+
+  <ion-toolbar mode="ios" >
+    <ion-title>Edit Plant</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="plantToEdit" (ngSubmit)="saveChanges()">
+    <ion-img [src]="picture"></ion-img>
+    <div class="fab-container ion-no-padding">
+    <ion-fab class="ion-no-padding camera-fab" vertical="top" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="presentPhotoActionSheet()" size="small" color="tertiary">
+        <ion-icon class="camera" name="camera"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+    <ion-item>
+      <ion-label position="stacked" inputmode="text">Name</ion-label>
+      <ion-input formControlName="name"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.name">
+      <ng-container *ngIf="plantToEdit.get('name').hasError(error.type) && (plantToEdit.get('name').dirty || plantToEdit.get('name').touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="stacked">Plant species</ion-label>
+      <ion-select class="ion-no-padding" interface="alert" formControlName="species" cancelText="Close"
+                  okText="Choose">
+        <ion-select-option *ngFor="let species of jsonService.plantSpecies">{{species.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.species">
+      <ng-container *ngIf="plantToEdit.get('species').hasError(error.type) && (plantToEdit.get('species').dirty || plantToEdit.get('species').touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="stacked">Watering interval</ion-label>
+      <ion-select class="ion-no-padding" interface="alert" formControlName="interval" cancelText="Close"
+                  okText="Choose">
+        <ion-select-option>Every day</ion-select-option>
+        <ion-select-option>Every 2 days</ion-select-option>
+        <ion-select-option>Every 3 days</ion-select-option>
+        <ion-select-option>Every 4 days</ion-select-option>
+        <ion-select-option>Every 5 days</ion-select-option>
+        <ion-select-option>Every 6 days</ion-select-option>
+        <ion-select-option>Once a week</ion-select-option>
+        <ion-select-option>Every 2 weeks</ion-select-option>
+      </ion-select>
+      <div *ngFor="let error of errorMessages.interval">
+        <ng-container *ngIf="plantToEdit.get('interval').hasError(error.type) && (plantToEdit.get('interval').dirty || plantToEdit.get('interval').touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Last watered</ion-label>
+      <ion-datetime class="ion-no-padding" formControlName="lastWatered"></ion-datetime>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.lastWatered">
+      <ng-container *ngIf="plantToEdit.get('lastWatered').hasError(error.type) && (plantToEdit.get('lastWatered').dirty || plantToEdit.get('lastWatered').touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="stacked">Planting date</ion-label>
+      <ion-datetime class="ion-no-padding" formControlName="birthday"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked" inputmode="text">Description</ion-label>
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+    <div class="ion-margin-top">
+      <ion-button expand="block" [disabled]="!plantToEdit.valid" type="submit" color="primary">Save Changes</ion-button>
+      <ion-button expand="block" (click)="showAlert()" type="button" fill="outline" color="danger">Delete Plant</ion-button>
+
+    </div>
+  </form>
+</ion-content>
+

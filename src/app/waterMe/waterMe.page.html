@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+    <ion-toolbar mode="ios">
+        <ion-buttons slot="start">
+            <ion-button (click)="shareViaEmail()">
+                <ion-icon name="share-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="goToSettings()">
+                <ion-icon name="settings-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">
+            Water Me
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false">
+    <ion-grid>
+        <ion-row>
+            <ion-col size-sm="12" size-md="6" offset-sm="0" offset-md="3">
+                <ion-list class="ion-no-padding size-lg-6" *ngFor="let plant of duePlants">
+                    <ion-item-sliding>
+                        <ion-item>
+                            <ion-avatar slot="start">
+                                <ion-img src={{plant.imgSrc}}></ion-img>
+                            </ion-avatar>
+                            <ion-label>
+                                <h2>{{plant.name}}</h2>
+                                <h3>{{plant.species}}</h3>
+                                <p class="due-Today">due today</p>
+                            </ion-label>
+                        </ion-item>
+                        <ion-item-options side="end">
+                            <ion-item-option class="watered" (click)="watered(plant.id)">Watered</ion-item-option>
+                        </ion-item-options>
+                    </ion-item-sliding>
+                </ion-list>
+                    <ion-list class="ion-no-padding size-lg-6" *ngFor="let plant of overduePlants">
+                        <ion-item-sliding>
+                            <ion-item>
+                                <ion-avatar slot="start">
+                                    <ion-img src={{plant.imgSrc}}></ion-img>
+                                </ion-avatar>
+                                <ion-label>
+                                    <h2>{{plant.name}}</h2>
+                                    <h3>{{plant.species}}</h3>
+                                    <p class="overdue">overdue</p>
+                                </ion-label>
+                            </ion-item>
+                            <ion-item-options side="end">
+                                <ion-item-option class="watered" (click)="watered(plant.id)">Watered</ion-item-option>
+                            </ion-item-options>
+                        </ion-item-sliding>
+                    </ion-list>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
