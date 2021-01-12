@@ -5,12 +5,7 @@
 export const environment = {
     production: false,
     firebase: {
-        apiKey: "AIzaSyCDLBCU91rwh39qX0s6dbOAYe0D5-i1BlU",
-        authDomain: "bevi-b2627.firebaseapp.com",
-        projectId: "bevi-b2627",
-        storageBucket: "bevi-b2627.appspot.com",
-        messagingSenderId: "411194097130",
-        appId: "1:411194097130:web:904ec3a97728417b7ac693"
+        // firebase API Key removed 
     }
 };
 
