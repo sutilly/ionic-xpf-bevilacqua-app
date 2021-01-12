@@ -1,4 +1,4 @@
-# Bevi!acqua Plant Care App
+# :herb: :leaves: :seedling: Bevi!acqua Plant Care App :seedling: :leaves: :herb:
 First attempt to develop a cross-platform app.
 Free assignment. 
 
@@ -26,6 +26,7 @@ The "Water Me"-Tab provides you with an overview of all plants that need waterin
 Local Notifications remind you to care for them in case you forget.
 
 ## Screencast Example
+Screencast of the app running on iOS Emulator
 
 ![](bevi_IOS_final.gif)
 
